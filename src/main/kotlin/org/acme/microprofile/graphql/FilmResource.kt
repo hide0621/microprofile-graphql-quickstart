@@ -34,7 +34,14 @@ class FilmResource {
         return service.getFilm(id)
     }
 
-    fun heroes(@Source film:Film): List<Hero> {
-        return service.getHeroesByFilm(film)
+//    fun heroes(@Source film:Film): List<Hero> {
+//        return service.getHeroesByFilm(film)
+//    }
+
+    /**
+     * バッチ処理の形式でヒーローを取得する
+     */
+    fun heroes(@Source films: List<Film>): List<List<Hero>> {
+        return films.map { service.getHeroesByFilm(it) }
     }
 }
