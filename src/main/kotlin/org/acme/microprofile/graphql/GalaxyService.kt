@@ -42,7 +42,7 @@ class GalaxyService {
         /**
          * この場合、[heroes.filter] のラムダ式内で [it] は [heroes] リストの各要素（つまり [Hero] オブジェクト）を指す
          */
-        return heroes.filter { it.episodeIds.contains(film.episodeId) }
+        return heroes.filter { it.episodeIds.contains(film.episodeID) }
     }
 
     fun addHero(hero: Hero) {

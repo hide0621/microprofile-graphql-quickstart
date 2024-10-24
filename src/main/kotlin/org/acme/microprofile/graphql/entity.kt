@@ -6,7 +6,7 @@ import java.time.LocalDate
  * GraphQLスキーマに対応するエンティティ
  */
 
-class Film(val title:String, val episodeId:Int, val openingCrawl:String, val releaseDate:LocalDate?) {
+class Film(val title:String, val episodeID:Int, val director:String, val releaseDate:LocalDate?) {
 
 
 //    init {
