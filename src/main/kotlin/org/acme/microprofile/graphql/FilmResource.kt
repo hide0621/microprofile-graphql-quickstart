@@ -24,6 +24,9 @@ class FilmResource {
     @Inject
     lateinit var service: GalaxyService
 
+    /**
+     * [Context]はエラーになったのでパス
+     */
 //    @Inject
 //    lateinit var context: Context
 
@@ -106,7 +109,7 @@ class FilmResource {
     }
 
     /**
-     * ミューテーションとサブスクリプションはパス
+     * ミューテーションとサブスクリプションはエラーになったのでパス
      */
 //    @Mutation("addHero")
 //    fun createHero(hero: Hero): Hero {
