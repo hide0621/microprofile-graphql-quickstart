@@ -1,7 +1,11 @@
 package org.acme.microprofile.graphql;
 
 import io.smallrye.graphql.api.Union
+import jakarta.json.bind.annotation.JsonbCreator
+import jakarta.json.bind.annotation.JsonbProperty
 import java.time.LocalDate
+
+import org.eclipse.microprofile.graphql.Input
 
 /**
  * GraphQLスキーマに対応するエンティティ
@@ -21,7 +25,7 @@ class Film(val title:String, val episodeID:Int, val director:String, val release
 /**
  * [Character] インターフェースのプロパティをオーバーライドする
  */
-class  Hero(override val name:String, override val surname:String, val height:Double, val mass:Int, val darkSide:Boolean, val lightSaber:LightSaber, val episodeIds:List<Int>): Character {
+class Hero(override val name:String, override val surname:String, val height:Double, val mass:Int, val darkSide:Boolean, val lightSaber:LightSaber, val episodeIds:List<Int>): Character {
 
 //        init {
 //            this.name = name
@@ -32,6 +36,7 @@ class  Hero(override val name:String, override val surname:String, val height:Do
 //            this.lightSaber = lightSaber
 //            this.episodeIds = episodeIds
 //        }
+
 }
 
 enum class LightSaber {

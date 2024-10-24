@@ -1,7 +1,9 @@
 package org.acme.microprofile.graphql
 
 import io.smallrye.mutiny.Uni
+import jakarta.enterprise.context.ApplicationScoped
 import jakarta.inject.Inject
+import org.eclipse.microprofile.graphql.DefaultValue
 import org.eclipse.microprofile.graphql.Description
 import org.eclipse.microprofile.graphql.GraphQLApi
 import org.eclipse.microprofile.graphql.Name
@@ -9,6 +11,7 @@ import org.eclipse.microprofile.graphql.Query
 import org.eclipse.microprofile.graphql.Source
 import org.jetbrains.annotations.Blocking
 import org.jetbrains.annotations.NonBlocking
+import org.eclipse.microprofile.graphql.Mutation
 
 /**
  * GraphQL APIのエンドポイントになるクラス
@@ -85,5 +88,28 @@ class FilmResource {
     @Description("Search for heroes or films")
     fun search(query:String): List<SearchResult>{
         return service.search(query)
+    }
+
+    /**
+     * ミューテーションとサブスクリプションはパス
+     */
+//    @Mutation("addHero")
+//    fun createHero(hero: Hero): Hero {
+//        service.addHero(hero)
+//        return hero
+//    }
+//
+//    @Mutation("deleteHero")
+//    fun deleteHero(id: Int): Hero? {
+//        return service.deleteHero(id)
+//    }
+
+    /**
+     * パラメータを持つクエリ
+     * イメージはwhere句による絞り込み
+     */
+    @Query
+    fun getHeroesWithSurname(@DefaultValue("Skywalker") surname: String): List<Hero> {
+        return service.getHeroesBySurname(surname)
     }
 }
