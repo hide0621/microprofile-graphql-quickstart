@@ -69,4 +69,15 @@ class FilmResource {
     fun heroes(@Source films: List<Film>): List<List<Hero>> {
         return films.map { service.getHeroesByFilm(it) }
     }
+
+    @Query
+    fun allies(): List<Ally> {
+        return service.getAllAllies()
+    }
+
+    @Query
+    @Description("Get all characters from a galaxy far far away")
+    fun characters(): List<Character> {
+        return service.getAllCharacters()
+    }
 }

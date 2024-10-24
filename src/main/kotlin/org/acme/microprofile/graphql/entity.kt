@@ -17,7 +17,7 @@ class Film(val title:String, val episodeID:Int, val director:String, val release
 //    }
 }
 
-class  Hero(val name:String, val surname:String, val height:Double, val mass:Int, val darkSide:Boolean, val lightSaber:LightSaber, val episodeIds:List<Int>) {
+class  Hero(override val name:String, override val surname:String, val height:Double, val mass:Int, val darkSide:Boolean, val lightSaber:LightSaber, val episodeIds:List<Int>): Character {
 
 //        init {
 //            this.name = name
@@ -32,4 +32,17 @@ class  Hero(val name:String, val surname:String, val height:Double, val mass:Int
 
 enum class LightSaber {
     RED, BLUE, GREEN
+}
+
+/**
+ * [Character] インターフェースのプロパティをオーバーライドする
+ */
+class Ally(override val name: String, override val surname: String, val partner: Hero? = null): Character {}
+
+/**
+    * Kotlinではプロパティにはデフォルトでゲッターが自動的に付与されている
+ */
+interface Character {
+    val name: String
+    val surname: String
 }

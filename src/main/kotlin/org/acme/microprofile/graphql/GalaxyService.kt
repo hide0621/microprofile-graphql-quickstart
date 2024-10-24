@@ -13,6 +13,8 @@ class GalaxyService {
 
     private val films:MutableList<Film> = mutableListOf()
 
+    private val allies:MutableList<Ally> = mutableListOf()
+
     init {
         val aNewHope = Film("A New Hope", 4, "George Lucas", LocalDate.of(1977, Month.MAY, 25))
         val theEmpireStrikesBack = Film("The Empire Strikes Back", 5, "George Lucas", LocalDate.of(1980, Month.MAY, 21))
@@ -29,6 +31,9 @@ class GalaxyService {
         heroes.add(luke)
         heroes.add(leia)
         heroes.add(vader)
+
+        val jarjar = Ally("Jar Jar", "Binks")
+        allies.add(jarjar)
     }
 
     fun getAllFilms(): List<Film> {
@@ -70,5 +75,15 @@ class GalaxyService {
         return heroes.filter { it.surname == surname }
     }
 
+    fun getAllAllies(): List<Ally> {
+        return allies
+    }
+
+    fun getAllCharacters(): List<Character> {
+        val characters:MutableList<Character> = mutableListOf()
+        characters.addAll(heroes)
+        characters.addAll(allies)
+        return characters
+    }
 
 }
