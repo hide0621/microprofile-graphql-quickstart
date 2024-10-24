@@ -59,6 +59,8 @@ class GalaxyService {
     fun getHeroesByFilm(film: Film): List<Hero> {
         /**
          * この場合、[heroes.filter] のラムダ式内で [it] は [heroes] リストの各要素（つまり [Hero] オブジェクト）を指す
+         *
+         * [contains]は、リスト(今回は[episodeIds])が指定された要素を含む場合にtrueを返す
          */
         return heroes.filter { it.episodeIds.contains(film.episodeID) }
     }
@@ -84,6 +86,18 @@ class GalaxyService {
         characters.addAll(heroes)
         characters.addAll(allies)
         return characters
+    }
+
+    fun search(query:String): List<SearchResult> {
+        val results:MutableList<SearchResult> = mutableListOf()
+
+        val matchingFilms = films.filter { it.title.contains(query) || it.director.contains(query) }
+        results.addAll(matchingFilms)
+
+        val matchingCharacters = getAllCharacters().filter { it.name.contains(query) || it.surname.contains(query) }
+        results.addAll(matchingCharacters)
+
+        return results
     }
 
 }

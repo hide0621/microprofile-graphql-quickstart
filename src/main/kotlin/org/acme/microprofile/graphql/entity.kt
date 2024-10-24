@@ -1,12 +1,13 @@
 package org.acme.microprofile.graphql;
 
+import io.smallrye.graphql.api.Union
 import java.time.LocalDate
 
 /**
  * GraphQLスキーマに対応するエンティティ
  */
 
-class Film(val title:String, val episodeID:Int, val director:String, val releaseDate:LocalDate?) {
+class Film(val title:String, val episodeID:Int, val director:String, val releaseDate:LocalDate?): SearchResult {
 
 
 //    init {
@@ -17,6 +18,9 @@ class Film(val title:String, val episodeID:Int, val director:String, val release
 //    }
 }
 
+/**
+ * [Character] インターフェースのプロパティをオーバーライドする
+ */
 class  Hero(override val name:String, override val surname:String, val height:Double, val mass:Int, val darkSide:Boolean, val lightSaber:LightSaber, val episodeIds:List<Int>): Character {
 
 //        init {
@@ -42,7 +46,15 @@ class Ally(override val name: String, override val surname: String, val partner:
 /**
     * Kotlinではプロパティにはデフォルトでゲッターが自動的に付与されている
  */
-interface Character {
+interface Character: SearchResult {
     val name: String
     val surname: String
 }
+
+/**
+ * 検索結果を表すインターフェース
+ * [@Union]GraphQLのユニオン型を表すアノテーション
+ * ユニオン型は、複数の異なる型を一つの型として扱うことができるGraphQLの機能
+ */
+@Union
+interface SearchResult{}

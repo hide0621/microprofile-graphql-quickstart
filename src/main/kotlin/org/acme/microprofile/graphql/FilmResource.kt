@@ -80,4 +80,10 @@ class FilmResource {
     fun characters(): List<Character> {
         return service.getAllCharacters()
     }
+
+    @Query
+    @Description("Search for heroes or films")
+    fun search(query:String): List<SearchResult>{
+        return service.search(query)
+    }
 }
