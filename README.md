@@ -4,6 +4,18 @@ This project uses Quarkus, the Supersonic Subatomic Java Framework.
 
 If you want to learn more about Quarkus, please visit its website: <https://quarkus.io/>.
 
+## このプロジェクトの作成方法
+
+以下のコマンドを使う
+
+`quarkus create app org.acme:microprofile-graphql-quickstart \
+--extension='quarkus-smallrye-graphql' \
+--no-code --kotlin --gradle`
+
+また、別プロジェクトでGraphQLのパッケージを使う際は以下のコマンドを使う
+
+`quarkus extension add quarkus-smallrye-graphql`
+
 ## Running the application in dev mode
 
 You can run your application in dev mode that enables live coding using:
