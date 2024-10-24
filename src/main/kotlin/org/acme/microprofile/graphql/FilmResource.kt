@@ -1,5 +1,6 @@
 package org.acme.microprofile.graphql
 
+import io.smallrye.mutiny.Uni
 import jakarta.inject.Inject
 import org.eclipse.microprofile.graphql.Description
 import org.eclipse.microprofile.graphql.GraphQLApi
@@ -27,10 +28,21 @@ class FilmResource {
 
     /**
      * [film]という名前のクエリを定義
+     * 同期処理用のメソッド
+     */
+//    @Query
+//    @Description("Get a Films from a galaxy far far away")
+//    fun getFilm(@Name("filmId") id:Int):Film {
+//        return service.getFilm(id)
+//    }
+
+    /**
+     * [film]という名前のクエリを定義
+     * 非同期処理用のメソッド
      */
     @Query
     @Description("Get a Films from a galaxy far far away")
-    fun getFilm(@Name("filmId") id:Int):Film {
+    fun getFilm(@Name("filmId") id:Int): Uni<Film> {
         return service.getFilm(id)
     }
 
