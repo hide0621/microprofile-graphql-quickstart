@@ -39,17 +39,17 @@ class GalaxyService {
      * このメソッドは、[films]リストから指定されたIDの映画を取得する
      * 同期処理用のゲッター
      */
-//    fun getFilm(id: Int): Film {
-//        return films[id]
-//    }
+    fun getFilm(id: Int): Film {
+        return films[id]
+    }
 
     /**
      * このメソッドは、[films]リストから指定されたIDの映画を取得する
      * 非同期処理用のゲッター
      */
-    fun getFilm(id: Int): Uni<Film> {
-        return Uni.createFrom().item(films[id])
-    }
+//    fun getFilm(id: Int): Uni<Film> {
+//        return Uni.createFrom().item(films[id])
+//    }
 
     fun getHeroesByFilm(film: Film): List<Hero> {
         /**

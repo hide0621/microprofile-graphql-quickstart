@@ -7,6 +7,8 @@ import org.eclipse.microprofile.graphql.GraphQLApi
 import org.eclipse.microprofile.graphql.Name
 import org.eclipse.microprofile.graphql.Query
 import org.eclipse.microprofile.graphql.Source
+import org.jetbrains.annotations.Blocking
+import org.jetbrains.annotations.NonBlocking
 
 /**
  * GraphQL APIのエンドポイントになるクラス
@@ -30,24 +32,35 @@ class FilmResource {
      * [film]という名前のクエリを定義
      * 同期処理用のメソッド
      */
-//    @Query
-//    @Description("Get a Films from a galaxy far far away")
-//    fun getFilm(@Name("filmId") id:Int):Film {
-//        return service.getFilm(id)
-//    }
+    @Query
+    @Description("Get a Films from a galaxy far far away")
+    fun getFilm(@Name("filmId") id:Int):Film {
+        return service.getFilm(id)
+    }
 
     /**
      * [film]という名前のクエリを定義
      * 非同期処理用のメソッド
      */
-    @Query
-    @Description("Get a Films from a galaxy far far away")
-    fun getFilm(@Name("filmId") id:Int): Uni<Film> {
-        return service.getFilm(id)
-    }
+//    @Query
+//    @Description("Get a Films from a galaxy far far away")
+//    fun getFilm(@Name("filmId") id:Int): Uni<Film> {
+//        return service.getFilm(id)
+//    }
 
 //    fun heroes(@Source film:Film): List<Hero> {
 //        return service.getHeroesByFilm(film)
+//    }
+
+    /**
+     * [film]という名前のクエリを定義
+     * @NonBlocking
+     */
+//    @Query
+//    @Description("Get a Films from a galaxy far far away")
+//    @NonBlocking
+//    fun getFilm(@Name("filmId") id:Int):Film {
+//        return service.getFilm(id)
 //    }
 
     /**
