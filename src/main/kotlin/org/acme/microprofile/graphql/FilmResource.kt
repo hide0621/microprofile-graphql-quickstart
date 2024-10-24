@@ -1,11 +1,13 @@
 package org.acme.microprofile.graphql
 
+import io.smallrye.mutiny.Context
 import io.smallrye.mutiny.Uni
 import jakarta.enterprise.context.ApplicationScoped
 import jakarta.inject.Inject
 import org.eclipse.microprofile.graphql.DefaultValue
 import org.eclipse.microprofile.graphql.Description
 import org.eclipse.microprofile.graphql.GraphQLApi
+import org.eclipse.microprofile.graphql.Id
 import org.eclipse.microprofile.graphql.Name
 import org.eclipse.microprofile.graphql.Query
 import org.eclipse.microprofile.graphql.Source
@@ -21,6 +23,9 @@ class FilmResource {
 
     @Inject
     lateinit var service: GalaxyService
+
+//    @Inject
+//    lateinit var context: Context
 
     /**
      * [allFilms]という名前のクエリを定義
@@ -64,6 +69,16 @@ class FilmResource {
 //    @NonBlocking
 //    fun getFilm(@Name("filmId") id:Int):Film {
 //        return service.getFilm(id)
+//    }
+
+    /**
+     * [film]という名前のクエリを定義
+     * Contextを使った処理
+     */
+//    @Query
+//    @Description("Get a Films from a galaxy far far away")
+//    fun getFilm(context: Context, filmId: Int):Film {
+//        return service.getFilm(filmId)
 //    }
 
     /**
